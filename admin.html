@@ -37,7 +37,19 @@ cursor:pointer;
 </head>
 
 <body>
+<div class="box">
 
+<h2>🔐 Admin Login</h2>
+
+<input id="email" placeholder="Email">
+
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="login()">
+Login करें
+</button>
+
+</div>
 <div class="box">
 
 <h2>📢 नोटिस जोड़ें</h2>
@@ -58,11 +70,30 @@ Publish करें
 <script type="module">
 
 import { db } from "./firebase-config.js";
-
+import { getAuth, signInWithEmailAndPassword }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { collection, addDoc }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+const auth = getAuth();
 
+window.login = function(){
+
+let email = document.getElementById("email").value;
+
+let password = document.getElementById("password").value;
+
+signInWithEmailAndPassword(auth,email,password)
+
+.then(()=>{
+alert("Login सफल");
+})
+
+.catch(()=>{
+alert("Email या Password गलत है");
+});
+
+}
 window.addNotice = async function(){
 
 await addDoc(collection(db,"notices"),{
