@@ -89,8 +89,8 @@ signInWithEmailAndPassword(auth,email,password)
 alert("Login सफल");
 })
 
-.catch(()=>{
-alert("Email या Password गलत है");
+.catch((error)=>{
+alert(error.message);
 });
 
 }
