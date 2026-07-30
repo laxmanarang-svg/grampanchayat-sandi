@@ -87,11 +87,22 @@ function searchSection() {
 }
 async function loadNotices(){
 
+
+const noticeBox = document.getElementById("notice-list");
+
 const querySnapshot = await getDocs(collection(db,"notices"));
 
 querySnapshot.forEach((doc)=>{
 
-console.log(doc.data());
+let data = doc.data();
+
+noticeBox.innerHTML += `
+<div class="notice-card">
+<h3>${data.title}</h3>
+<p>${data.description}</p>
+<small>${data.date}</small>
+</div>
+`;
 
 });
 
