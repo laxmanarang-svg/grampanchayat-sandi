@@ -1,16 +1,19 @@
-import { db } from "./firebase-config.js";
-import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 const slider = document.getElementById("sliderImage");
 
 const images = [
-"banner 1.jpeg",
-"banner 2.jpeg",
-"banner 3.jpeg"
-];
-];
+  "banner 1.jpeg",
+  "banner 2.jpeg",
+  "banner 3.jpeg"
 ];
 
 let index = 0;
+
+function changeImage() {
+  index = (index + 1) % images.length;
+  slider.src = images[index];
+}
+
+setInterval(changeImage, 2000);
 
 function changeImage() {
     index = (index + 1) % images.length;
