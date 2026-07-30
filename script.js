@@ -15,12 +15,7 @@ function changeImage() {
 
 setInterval(changeImage, 2000);
 
-function changeImage() {
-    index = (index + 1) % images.length;
-    slider.src = images[index];
-}
 
-setInterval(changeImage, 2000);
 let topButton = document.getElementById("topBtn");
 
 window.onscroll = function () {
