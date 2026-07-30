@@ -3,9 +3,9 @@ import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/
 const slider = document.getElementById("sliderImage");
 
 const images = [
-  "banner 1.jpeg",
-  "banner 2.jpeg",
-  "banner 3.jpeg"
+"banner 1.jpeg",
+"banner 2.jpeg",
+"banner 3.jpeg"
 ];
 
 let index = 0;
