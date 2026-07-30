@@ -8,6 +8,7 @@ const images = [
 "banner 3.jpeg"
 ];
 ];
+];
 
 let index = 0;
 
