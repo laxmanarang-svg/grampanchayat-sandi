@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel - Gram Panchayat Sandi</title>
 
+<style>
+body{
+font-family:Arial;
+background:#f2f2f2;
+padding:30px;
+}
+
+.box{
+background:white;
+padding:25px;
+border-radius:10px;
+max-width:500px;
+margin:auto;
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+background:green;
+color:white;
+padding:12px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>📢 नोटिस जोड़ें</h2>
+
+<input id="title" placeholder="नोटिस शीर्षक">
+
+<textarea id="description" placeholder="नोटिस विवरण"></textarea>
+
+<input id="date" placeholder="दिनांक">
+
+<button onclick="addNotice()">
+Publish करें
+</button>
+
+</div>
+
+
+<script type="module">
+
+import { db } from "./firebase-config.js";
+
+import { collection, addDoc }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+window.addNotice = async function(){
+
+await addDoc(collection(db,"notices"),{
+
+title: document.getElementById("title").value,
+
+description: document.getElementById("description").value,
+
+date: document.getElementById("date").value
+
+});
+
+
+alert("नोटिस सफलतापूर्वक जुड़ गया");
+
+}
+
+</script>
+
+
+</body>
+</html>
