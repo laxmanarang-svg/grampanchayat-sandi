@@ -70,11 +70,21 @@ querySnapshot.forEach((doc)=>{
 
 const n=doc.data();
 
-html+=`
-<div style="border:1px solid #ddd;padding:10px;margin:10px">
+html += `
+<div style="border:1px solid #ddd;padding:10px;margin:10px;border-radius:8px">
+
 <h3>${n.title}</h3>
+
 <p>${n.description}</p>
+
 <small>${n.date}</small>
+
+<br><br>
+
+<button onclick="deleteNotice('${doc.id}')">
+🗑️ Delete
+</button>
+
 </div>
 `;
 
