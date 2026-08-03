@@ -11,16 +11,80 @@
 <p>Welcome Laxman</p>
 
 <button onclick="logout()">Logout</button>
+<hr>
 
+<h2>📢 Add Notice</h2>
+
+<input type="text" id="title" placeholder="Notice Title"><br><br>
+
+<textarea id="description" placeholder="Notice Description"></textarea><br><br>
+
+<input type="date" id="date"><br><br>
+
+<button onclick="addNotice()">Publish Notice</button>
+
+<hr>
+
+<h2>📋 All Notices</h2>
+
+<div id="noticeList"></div>
 <script type="module">
-import { auth } from "./firebase-config.js";
+import { auth, db } from "./firebase-config.js";
 import { signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
+import {
+addDoc,
+collection,
+getDocs
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 window.logout = function(){
     signOut(auth).then(()=>{
         window.location.href="admin.html";
     });
 }
+    window.addNotice = async function(){
+
+await addDoc(collection(db,"notices"),{
+
+title:document.getElementById("title").value,
+
+description:document.getElementById("description").value,
+
+date:document.getElementById("date").value
+
+});
+
+alert("Notice Published");
+
+loadNotices();
+
+}
+
+async function loadNotices(){
+
+const querySnapshot=await getDocs(collection(db,"notices"));
+
+let html="";
+
+querySnapshot.forEach((doc)=>{
+
+const n=doc.data();
+
+html+=`
+<div style="border:1px solid #ddd;padding:10px;margin:10px">
+<h3>${n.title}</h3>
+<p>${n.description}</p>
+<small>${n.date}</small>
+</div>
+`;
+
+});
+
+document.getElementById("noticeList").innerHTML=html;
+
+}
+
+loadNotices();
 </script>
 
 </body>
