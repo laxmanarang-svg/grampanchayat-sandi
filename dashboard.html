@@ -34,10 +34,11 @@ import { signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-aut
 import {
 addDoc,
 collection,
-getDocs
+getDocs,
+deleteDoc,
+doc
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-window.logout = function(){
     signOut(auth).then(()=>{
         window.location.href="admin.html";
     });
@@ -93,7 +94,19 @@ html += `
 document.getElementById("noticeList").innerHTML=html;
 
 }
+window.deleteNotice = async function(id){
 
+if(confirm("क्या आप यह Notice Delete करना चाहते हैं?")){
+
+await deleteDoc(doc(db,"notices",id));
+
+alert("Notice Delete Successfully");
+
+loadNotices();
+
+}
+
+}
 loadNotices();
 </script>
 
