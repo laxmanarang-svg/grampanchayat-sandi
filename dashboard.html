@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+</head>
+<body>
+
+<h1>🎉 Admin Dashboard</h1>
+
+<p>Welcome Laxman</p>
+
+<button onclick="logout()">Logout</button>
+
+<script type="module">
+import { auth } from "./firebase-config.js";
+import { signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+window.logout = function(){
+    signOut(auth).then(()=>{
+        window.location.href="admin.html";
+    });
+}
+</script>
+
+</body>
+</html>
