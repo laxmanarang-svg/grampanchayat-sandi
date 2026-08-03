@@ -69,13 +69,13 @@ Publish करें
 
 <script type="module">
 
-import { db } from "./firebase-config.js";
-import { getAuth, signInWithEmailAndPassword }
+import { db, auth } from "./firebase-config.js";
+import { signInWithEmailAndPassword }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { collection, addDoc }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const auth = getAuth();
+
 
 window.login = function(){
 
