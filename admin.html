@@ -86,7 +86,8 @@ let password = document.getElementById("password").value;
 signInWithEmailAndPassword(auth,email,password)
 
 .then(()=>{
-alert("Login सफल");
+    alert("Login सफल");
+    window.location.href = "dashboard.html";
 })
 
 .catch((error)=>{
