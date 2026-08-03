@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAKRFkjIYBtYeeR7FyL8nbUvdyiOsJt7Jg",
+  apiKey: "AIzaSyAKRFkjIYBtYEeR7Fyl8nbUvdyiOsJt7Jg",
   authDomain: "gram-panchayat-sandi.firebaseapp.com",
   projectId: "gram-panchayat-sandi",
   storageBucket: "gram-panchayat-sandi.firebasestorage.app",
